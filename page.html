@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .demo,
+            .demo2 {
+                background-color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="demo2">获取文件夹</div>
+        <div id="filelist"></div>
+        <div class="demo">下载文件</div>
+        <div id="down"></div>
+        <script src="http://static.tcy365.com/cdn/jquery/2.1.0/jquery.js"></script>
+        <script>
+            var result = '';
+            function sendMsg(data) {
+                window.parent.postMessage(data, '*');
+            }
+            function downComplete(data) {
+                result += JSON.stringify(data);
+                $('#down').html(result);
+            }
+            window.addEventListener('message', (event) => {
+                const message = event.data;
+                if (message.act === 'downComplete') {
+                    downComplete(message);
+                }
+                if (message.act === 'dirList') {
+                    $('#filelist').html(JSON.stringify(message));
+                }
+            });
+            $('.demo').click(function () {
+                sendMsg({
+                    target: 'vscode',
+                    act: 'down',
+                    file:
+                        'https://github.com/ct-team/vuetsadm/tree/master/template/build-user',
+                    dir: 'src/a',
+                });
+            });
+            $('.demo2').click(function () {
+                $('.demo').html('');
+                sendMsg({
+                    target: 'vscode',
+                    act: 'getDir',
+                });
+            });
+        </script>
+    </body>
+</html>
