@@ -1,0 +1,75 @@
+{
+    "name": "auto-resourc-down",
+    "publisher": "daixl",
+    "displayName": "",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.43.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.autoResourceDown"
+    ],
+    "icon": "images/1.png",
+    "main": "./extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.autoResourceDown",
+                "title": "前端资源下载器",
+                "category": "extension.autoResourceDown"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "autoResourceDown 配置",
+            "properties": {
+                "autoResourceDown.url": {
+                    "type": "string",
+                    "default": "http://webtest.tcy365.org:1505/test/vscode/page.html",
+                    "description": "自定义对接地址"
+                },
+                "autoResourceDown.root": {
+                    "type": "string",
+                    "default": "src",
+                    "description": "存放的起始目录"
+                }
+            }
+        }
+    },
+    "viewsContainers": {
+        "activitybar": [
+            {
+                "id": "autoResourceDown",
+                "title": "资源下载",
+                "icon": "images/1.png"
+            }
+        ]
+    },
+    "scripts": {
+        "lint": "eslint .",
+        "pretest": "npm run lint",
+        "test": "node ./test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^7.0.1",
+        "@types/node": "^12.11.7",
+        "@types/vscode": "^1.43.0",
+        "eslint": "^6.8.0",
+        "glob": "^7.1.6",
+        "mocha": "^7.0.1",
+        "typescript": "^3.7.5",
+        "vscode-test": "^1.3.0"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "chalk": "^2.4.1",
+        "log-symbols": "^2.2.0",
+        "progress": "^2.0.0",
+        "request": "^2.87.0"
+    }
+}
