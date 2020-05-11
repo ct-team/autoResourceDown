@@ -19,7 +19,7 @@
         "commands": [
             {
                 "command": "extension.autoResourceDown",
-                "title": "前端资源下载器",
+                "title": "资源Down",
                 "category": "extension.autoResourceDown"
             }
         ],
@@ -29,7 +29,7 @@
             "properties": {
                 "autoResourceDown.url": {
                     "type": "string",
-                    "default": "http://webtest.tcy365.org:1505/test/vscode/page.html",
+                    "default": "http://daixuliang.gitee.io/auto-resource-down/",
                     "description": "自定义对接地址"
                 },
                 "autoResourceDown.root": {
@@ -38,16 +38,16 @@
                     "description": "存放的起始目录"
                 }
             }
+        },
+        "menus": {
+            "editor/title": [
+                {
+                    "when": "",
+                    "command": "extension.autoResourceDown",
+                    "group": "navigation"
+                }
+            ]
         }
-    },
-    "viewsContainers": {
-        "activitybar": [
-            {
-                "id": "autoResourceDown",
-                "title": "资源下载",
-                "icon": "images/1.png"
-            }
-        ]
     },
     "scripts": {
         "lint": "eslint .",
@@ -71,5 +71,9 @@
         "log-symbols": "^2.2.0",
         "progress": "^2.0.0",
         "request": "^2.87.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ct-team/autoResourceDown"
     }
 }
