@@ -1,7 +1,8 @@
 const vscode = require('vscode');
 const util = require('./webview/util');
 const gitdown = require('./webview/git-down');
-
+// const fs = require('fs');
+// const path = require('path');
 function getWebViewContent(context, templatePath, url) {
     let tempUrl = templatePath;
     if (!url) {
@@ -54,7 +55,16 @@ function activate(context) {
                         }
                         if (message.act === 'getDir') {
                             let filePath = util.getProjectPath();
-                            util.log(filePath);
+                            // util.log(filePath);
+                            // util.showError(path.join(filePath, root));
+                            // let item;
+                            // try {
+                            //     item = fs.readdirSync(path.join(filePath, root).replace(/^\\/, ''));
+                            // } catch (error) {
+                            //     item = error;
+                            // }
+                            // util.showError(JSON.stringify(item));
+                            // util.showError(JSON.stringify(util.getAllAlbums(filePath, root)));
                             panel.webview.postMessage({
                                 target: 'iframe',
                                 act: 'dirList',

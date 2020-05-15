@@ -1,9 +1,9 @@
 {
-    "name": "auto-resourc-down",
+    "name": "auto-resource-down",
     "publisher": "daixl",
     "displayName": "",
     "description": "",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.43.0"
     },
@@ -34,7 +34,7 @@
                 },
                 "autoResourceDown.root": {
                     "type": "string",
-                    "default": "src",
+                    "default": "src/",
                     "description": "存放的起始目录"
                 }
             }

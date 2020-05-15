@@ -12,7 +12,8 @@ const util = {
             return __dirname;
         }
         let workspaceFoldersFile = workspaceFolders.map((item) =>
-            item.uri.path.replace(/^\//, '').replace(/\//g, '\\')
+            //item.uri.path.replace(/^\//, '').replace(/\//g, '\\')
+            item.uri.path
         );
 
         return workspaceFoldersFile[0];
@@ -88,7 +89,9 @@ const util = {
             let items;
             let result = [];
             try {
-                items = fs.readdirSync(path.join(baseUrl, mypath));
+                items = fs.readdirSync(
+                    path.join(baseUrl, mypath).replace(/^\\/, '')
+                );
             } catch (error) {
                 return result;
             }
@@ -97,7 +100,9 @@ const util = {
             // 遍历当前目录中所有的文件和文件夹
             items.map((item) => {
                 let temp = path.join(mypath, item);
-                let itemFile = path.join(baseUrl, mypath, item);
+                let itemFile = path
+                    .join(baseUrl, mypath, item)
+                    .replace(/^\\/, '');
                 // 若当前的为文件夹
                 if (item === 'node_modules') {
                     return;
